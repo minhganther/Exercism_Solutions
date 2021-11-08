@@ -1,3 +1,7 @@
+"""
+Tisbury Treasure Hunt Exercise Functions
+"""
+
 def get_coordinate(record):
     """
 
@@ -5,7 +9,7 @@ def get_coordinate(record):
     :return: str - the extracted map coordinate.
     """
 
-    pass
+    return record[1]
 
 
 def convert_coordinate(coordinate):
@@ -15,7 +19,7 @@ def convert_coordinate(coordinate):
     :return:  tuple - the string coordinate seperated into its individual components.
     """
 
-    pass
+    return tuple(coordinate)
 
 
 def compare_records(azara_record, rui_record):
@@ -26,7 +30,7 @@ def compare_records(azara_record, rui_record):
     :return: bool - True if coordinates match, False otherwise.
     """
 
-    pass
+    return tuple(azara_record[1]) == rui_record[1]
 
 
 def create_record(azara_record, rui_record):
@@ -37,7 +41,7 @@ def create_record(azara_record, rui_record):
     :return:  tuple - combined record, or "not a match" if the records are incompatible.
     """
 
-    pass
+    return azara_record + rui_record if compare_records(azara_record, rui_record) else "not a match"
 
 
 def clean_up(combined_record_group):
@@ -47,4 +51,7 @@ def clean_up(combined_record_group):
     :return: string of tuples separated by newlines - everything "cleaned". Excess coordinates and information removed.
     """
 
-    pass
+    report = ""
+    for item in combined_record_group:
+        report += f"{tuple([item[0]])+item[2:]}\n"
+    return report
