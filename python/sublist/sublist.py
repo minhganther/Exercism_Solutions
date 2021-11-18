@@ -13,11 +13,17 @@ You can learn more here: https://en.wikipedia.org/wiki/Enumerated_type
 
 # Possible sublist categories.
 # Change the values as you see fit.
-SUBLIST = None
-SUPERLIST = None
-EQUAL = None
-UNEQUAL = None
+SUBLIST, SUPERLIST, EQUAL, UNEQUAL = range(4)
 
 
 def sublist(list_one, list_two):
-    pass
+    list1 = ",".join([str(i) for i in list_one])
+    list2 = ",".join([str(i) for i in list_two])
+
+    if list1==list2:
+        return EQUAL
+    elif list1 in list2 and all(i in list_two for i in list_one):
+        return SUBLIST
+    elif list2 in list1 and all(i in list_one for i in list_two):
+        return SUPERLIST
+    return UNEQUAL
